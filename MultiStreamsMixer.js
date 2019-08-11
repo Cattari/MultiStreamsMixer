@@ -224,7 +224,7 @@ function MultiStreamsMixer(arrayOfMediaStreams, elementClass, options) {
             return;
         }
 
-        var videosLength = videos.length;
+        // var videosLength = videos.length;
 
         var fullcanvas = false;
         var remaining = [];
@@ -241,30 +241,30 @@ function MultiStreamsMixer(arrayOfMediaStreams, elementClass, options) {
             }
         });
 
-        if (fullcanvas) {
-            canvas.width = fullcanvas.stream.width;
-            canvas.height = fullcanvas.stream.height;
-        } else if (remaining.length) {
-            canvas.width = videosLength > 1 ? remaining[0].width * 2 : remaining[0].width;
+        // if (fullcanvas) {
+        //     canvas.width = fullcanvas.stream.width;
+        //     canvas.height = fullcanvas.stream.height;
+        // } else if (remaining.length) {
+        //     canvas.width = videosLength > 1 ? remaining[0].width * 2 : remaining[0].width;
 
-            var height = 1;
-            if (videosLength === 3 || videosLength === 4) {
-                height = 2;
-            }
-            if (videosLength === 5 || videosLength === 6) {
-                height = 3;
-            }
-            if (videosLength === 7 || videosLength === 8) {
-                height = 4;
-            }
-            if (videosLength === 9 || videosLength === 10) {
-                height = 5;
-            }
-            canvas.height = remaining[0].height * height;
-        } else {
+        //     var height = 1;
+        //     if (videosLength === 3 || videosLength === 4) {
+        //         height = 2;
+        //     }
+        //     if (videosLength === 5 || videosLength === 6) {
+        //         height = 3;
+        //     }
+        //     if (videosLength === 7 || videosLength === 8) {
+        //         height = 4;
+        //     }
+        //     if (videosLength === 9 || videosLength === 10) {
+        //         height = 5;
+        //     }
+        //     canvas.height = remaining[0].height * height;
+        // } else {
             canvas.width = self.width || 360;
             canvas.height = self.height || 240;
-        }
+        // }
 
         if (fullcanvas && fullcanvas instanceof HTMLVideoElement) {
             drawImage(fullcanvas);
@@ -286,6 +286,8 @@ function MultiStreamsMixer(arrayOfMediaStreams, elementClass, options) {
         var y = 0;
         var width = video.width;
         var height = video.height;
+
+        // console.log(width, height);
 
         if (idx === 1) {
             x = video.width;
