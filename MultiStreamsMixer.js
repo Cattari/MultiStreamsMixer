@@ -10,7 +10,14 @@
 // MIT License   - www.WebRTC-Experiment.com/licence
 // --------------------------------------------------
 
-function MultiStreamsMixer(arrayOfMediaStreams, elementClass) {
+var defaultOptions = {
+    width: 360,
+    height: 240,
+    frameInterval: 10,
+};
+
+function MultiStreamsMixer(arrayOfMediaStreams, elementClass, options) {
+    options = options || defaultOptions;
 
     var browserFakeUserAgent = 'Fake/5.0 (FakeOS) AppleWebKit/123 (KHTML, like Gecko) Fake/12.3.4567.89 Fake/123.45';
 
@@ -126,10 +133,10 @@ function MultiStreamsMixer(arrayOfMediaStreams, elementClass) {
     (document.body || document.documentElement).appendChild(canvas);
 
     this.disableLogs = false;
-    this.frameInterval = 10;
+    this.frameInterval = options.frameInterval;
 
-    this.width = 360;
-    this.height = 240;
+    this.width = options.width;
+    this.height = options.height;
 
     // use gain node to prevent echo
     this.useGainNode = true;
